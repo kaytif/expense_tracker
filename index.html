@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Expense Tracker</title>
+</head>
+
+<body>
+    <h1>Expense Tracker</h1>
+
+    <!-- Inputs for creating an expense -->
+    <input id="name" type="text" placeholder="Expense name">
+    <input id="amount" type="number" placeholder="Amount">
+    <button onclick="addExpense()">Add Expense</button>
+
+    <h2>Expenses</h2>
+
+    <!-- Expenses from our Go API will appear here -->
+    <ul id="expenseList"></ul>
+
+    <script>
+        // Get expenses from our Go backend.
+        async function loadExpenses() {
+            const response = await fetch("/expenses");
+            const expenses = await response.json();
+
+            const list = document.getElementById("expenseList");
+            list.innerHTML = "";
+
+            // Display each expense on the page.
+            for (const expense of expenses) {
+                const item = document.createElement("li");
+                item.textContent = `${expense.name} - $${expense.amount}`;
+                list.appendChild(item);
+            }
+        }
+
+        // Send a new expense to our Go backend.
+        async function addExpense() {
+            const name = document.getElementById("name").value;
+            const amount = Number(document.getElementById("amount").value);
+
+            await fetch("/expenses", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ name, amount })
+            });
+
+            // Refresh the list after creating the expense.
+            loadExpenses();
+        }
+
+        // Load expenses when the page first opens.
+        loadExpenses();
+    </script>
+</body>
+</html>

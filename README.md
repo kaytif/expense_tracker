@@ -3,7 +3,7 @@
 
 A simple full-stack expense tracker built with Go and PostgreSQL. Very basic frontend to begin with.
 
-This project was built to learn the fundamentals of backend development, including HTTP APIs, database integration, validation, testing, configuration, and deployment.
+This project was built to learn the fundamentals of backend development, including REST API, HTTP, database integration, validation, testing, configuration, and deployment.
 
 ## Live Demo
 
@@ -26,7 +26,7 @@ https://expense-tracker-w2mu.onrender.com/
 
 - Go
 - PostgreSQL
-- HTML / JavaScript
+- HTML 
 - Neon
 - Render
 

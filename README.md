@@ -1,5 +1,6 @@
 ﻿# expense_tracker
 # Expense Tracker
+https://github.com/kaytif/expense_tracker 
 
 A simple full-stack expense tracker built with Go and PostgreSQL. Very basic frontend to begin with.
 
